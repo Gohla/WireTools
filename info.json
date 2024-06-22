@@ -7,5 +7,5 @@
   "dependencies": [
     "base"
   ],
-  "description": "Adds tools for managing wires."
+  "description": "Adds a power grid isolator tool that disconnects power poles inside the selected area from power poles outside of the selected area."
 }
