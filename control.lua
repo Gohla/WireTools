@@ -32,13 +32,17 @@ local function on_select_end(event)
 
   local disconnect_occurred = false
   for _, entity in pairs(event.entities) do
-    for _, connection in pairs(entity.copper_connection_definitions) do
-      if connection.source_wire_connector == defines.wire_connection_id.electric_pole and
-          connection.target_wire_connector == defines.wire_connection_id.electric_pole and
-          inside[connection.target_entity.unit_number] == nil
-      then
-        entity.disconnect_neighbour(connection.target_entity)
-        disconnect_occurred = true
+    if entity.valid then
+      for _, connection in pairs(entity.copper_connection_definitions) do
+        if connection.source_wire_connector == defines.wire_connection_id.electric_pole and
+            connection.target_wire_connector == defines.wire_connection_id.electric_pole and
+            connection.target_entity.valid and
+            connection.target_entity.type == "electric-pole" and
+            inside[connection.target_entity.unit_number] == nil
+        then
+          entity.disconnect_neighbour(connection.target_entity)
+          disconnect_occurred = true
+        end
       end
     end
   end
