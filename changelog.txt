@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.0
+Date: 19. 10. 2024
+  Features:
+    - Added circuit wire connector tool that connects/disconnects red/green circuit wires along the
+      power wires of selected power poles.
+  Bugfixes:
+    - Fixed size of power grid isolator tool icon.
+---------------------------------------------------------------------------------------------------
 Version: 0.1.1
 Date: 08. 07. 2024
   Bugfixes:

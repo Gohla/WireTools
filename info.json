@@ -1,11 +1,14 @@
 {
   "name": "WireTools",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "title": "Wire Tools",
   "author": "Gohla",
   "factorio_version": "1.1",
   "dependencies": [
     "base"
   ],
-  "description": "Adds a power grid isolator tool that disconnects power poles inside the selected area from power poles outside of the selected area."
+  "description": "Adds tools for managing wires: power grid isolator and circuit wire connector.",
+  "package": {
+    "readme": "README.md"
+  }
 }
