@@ -64,7 +64,7 @@ do
   local item, input, shortcut = create_selection_tool_prototypes(
     "wire-tools-isolator",
     "wire-tools-a",
-    "ALT + G"
+    "SHIFT + G"
   )
 
   item.select.border_color = { r = 0.72, g = 0.45, b = 0.2, a = 1 }
@@ -81,7 +81,7 @@ do
       icon_size = 64,
     },
     {
-      icon = "__base__/graphics/icons/copper-cable.png",
+      icon = "__WireTools__/graphics/icons/copper-cable.png",
       icon_size = 64,
       shift = { 0, -6 },
       scale = 0.3,
@@ -89,15 +89,15 @@ do
   }
   shortcut.icons = {
     {
-      icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-deconstruction-planner-x32.png",
-      icon_size = 32,
+      icon = "__WireTools__/graphics/icons/new-deconstruction-planner-x56.png",
+      icon_size = 56,
       scale = 0.5,
       tint = { r = 0.1, g = 0.1, b = 0.1 },
     }
   }
   shortcut.small_icons = {
     {
-      icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-deconstruction-planner-x24.png",
+      icon = "__WireTools__/graphics/icons/new-deconstruction-planner-x24.png",
       icon_size = 24,
       scale = 0.5,
       tint = { r = 0.1, g = 0.1, b = 0.1 },
@@ -117,7 +117,7 @@ do
   local item, input, shortcut = create_selection_tool_prototypes(
     "wire-tools-circuit-connector",
     "wire-tools-b",
-    "ALT + C"
+    "SHIFT + C"
   )
 
   item.reverse_select = table.deepcopy(default_select)

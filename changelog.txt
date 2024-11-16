@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.4.0
+Date: 16. 11. 2024
+  Features:
+    - Power grid isolator and circuit wire connector tools now also work with ghost power poles.
+  Changes:
+    - Support Factorio 2.0.19
+    - Changed default hotkey for the power grid isolator tool to Shift + G.
+    - Changed default hotkey for the circuit wire connector tool to Shift + C.
+---------------------------------------------------------------------------------------------------
 Version: 0.3.0
 Date: 22. 10. 2024
   Changes:

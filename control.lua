@@ -1,3 +1,12 @@
+---Checks whether the connection target is valid and a pole or ghost pole.
+---@param connection WireConnection
+local function connected_to_valid_pole(connection)
+  local t = connection.target
+  return
+      t.valid and t.owner.valid and
+      (t.owner.type == "electric-pole" or (t.owner.type == "entity-ghost" and t.owner.ghost_type == "electric-pole"))
+end
+
 ---Isolator, on selection end.
 ---@param event EventData.on_player_selected_area | EventData.on_player_alt_selected_area | EventData.on_player_reverse_selected_area | EventData.on_player_alt_reverse_selected_area
 local function isolator_on_select_end(event)
@@ -11,11 +20,8 @@ local function isolator_on_select_end(event)
     if entity.valid then
       local connector = entity.get_wire_connector(defines.wire_connector_id.pole_copper, false)
       if connector.valid then
-        for _, connection in pairs(connector.real_connections) do
-          if connection.target.valid and
-              connection.target.wire_connector_id == defines.wire_connector_id.pole_copper and -- TODO: is this needed? Does the connector only deal with wires of its own type?
-              connection.target.owner.valid and
-              connection.target.owner.type == "electric-pole" and
+        for _, connection in pairs(connector.connections) do
+          if connected_to_valid_pole(connection) and
               inside[connection.target.owner.unit_number] == nil -- Not inside selected area
           then
             connector.disconnect_from(connection.target)
@@ -62,10 +68,7 @@ local function circuit_connector_on_select_end(event, alt, reverse)
       local copper_connector = entity.get_wire_connector(defines.wire_connector_id.pole_copper, false)
       if copper_connector.valid then
         for _, copper_connection in pairs(copper_connector.connections) do
-          if copper_connection.target.valid and
-              copper_connection.target.wire_connector_id == defines.wire_connector_id.pole_copper and -- TODO: is this needed? Does the connector only deal with wires of its own type?
-              copper_connection.target.owner.valid and
-              copper_connection.target.owner.type == "electric-pole" and
+          if connected_to_valid_pole(copper_connection) and
               inside[copper_connection.target.owner.unit_number] ~= nil -- Only inside selected area
           then
             local circuit_connector = entity.get_wire_connector(wire_connector_id, true)
